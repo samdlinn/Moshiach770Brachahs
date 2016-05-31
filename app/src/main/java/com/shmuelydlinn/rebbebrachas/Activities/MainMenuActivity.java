@@ -31,9 +31,7 @@ public class MainMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main_menu_activity);
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -44,34 +42,37 @@ public class MainMenuActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         MenuAdapter menuAdapter = new MenuAdapter(menuItemList);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(menuAdapter);
+        if (recyclerView != null) {
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+            recyclerView.setLayoutManager(mLayoutManager);
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            recyclerView.setAdapter(menuAdapter);
 
-        recyclerView.addOnItemTouchListener(
-                new MainMenuRecyclerItemClickListener(getApplicationContext(), new MainMenuRecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
-                        Intent intent;
-                        switch (position){
-                            case 0:
-                                intent = new Intent(MainMenuActivity.this, InstructionActivity.class);
-                                startActivity(intent);
-                                break;
-                            case 1:
-                                intent = new Intent(MainMenuActivity.this, InformationActivity.class);
-                                startActivity(intent);
-                                break;
-                            case 2:
-                                intent = new Intent(MainMenuActivity.this, RequestActivity.class);
-                                startActivity(intent);
-                                break;
-                            default:
-                                Log.d("MainMenuActivity", "Error on Click at position " + position);
+            recyclerView.addOnItemTouchListener(
+                    new MainMenuRecyclerItemClickListener(getApplicationContext(), new MainMenuRecyclerItemClickListener.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(View view, int position) {
+                            Intent intent;
+                            switch (position) {
+                                case 0:
+                                    intent = new Intent(MainMenuActivity.this, InstructionActivity.class);
+                                    startActivity(intent);
+                                    break;
+                                case 1:
+                                    intent = new Intent(MainMenuActivity.this, InformationActivity.class);
+                                    startActivity(intent);
+                                    break;
+                                case 2:
+                                    intent = new Intent(MainMenuActivity.this, RequestActivity.class);
+                                    startActivity(intent);
+                                    break;
+                                default:
+                                    Log.d("MainMenuActivity", "Error on Click at position " + position);
+                            }
                         }
-                    }
-                })
-        );
+                    })
+            );
+        }
         prepareMenuItems();
     }
 

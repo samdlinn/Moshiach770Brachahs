@@ -28,7 +28,8 @@ public class RequestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        // used for incoming animation
+        overridePendingTransition(R.anim.enter_from_left, R.anim.exit_out_left);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -40,30 +41,41 @@ public class RequestActivity extends AppCompatActivity {
         Button sendButton = (Button) findViewById(R.id.send_button);
         final EditText letterText = (EditText) findViewById(R.id.letter_text);
         ImageButton donate = (ImageButton) findViewById(R.id.donation_button);
-        donate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent paypalIntent = new Intent(Intent.ACTION_VIEW);
-                paypalIntent.setData(Uri.parse(getString(R.string.paypal_url)));
-                startActivity(paypalIntent);
-            }
-        });
-        sendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                emailIntent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"Shmueld770@hotmail.com"});
-                emailIntent.setType("message/rfc822");
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Letter for the Rebbe Shlita");
-                emailIntent.putExtra(Intent.EXTRA_TEXT   , letterText.getText());
-                emailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
-
-                try {
-                    startActivity(Intent.createChooser(emailIntent, "Send email using..."));
-                } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(RequestActivity.this, "No email clients installed.", Toast.LENGTH_SHORT).show();
+        if (donate != null) {
+            donate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent paypalIntent = new Intent(Intent.ACTION_VIEW);
+                    paypalIntent.setData(Uri.parse(getString(R.string.paypal_url)));
+                    startActivity(paypalIntent);
                 }
-            }
-        });
+            });
+        }
+        if (sendButton != null) {
+            sendButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                    emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"Shmueld770@hotmail.com"});
+                    emailIntent.setType("message/rfc822");
+                    emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Letter for the Rebbe Shlita");
+                    emailIntent.putExtra(Intent.EXTRA_TEXT, letterText.getText());
+                    emailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
+
+                    try {
+                        startActivity(Intent.createChooser(emailIntent, "Send email using..."));
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        Toast.makeText(RequestActivity.this, "No email clients installed.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        // undoes animation
+        overridePendingTransition(R.anim.enter_from_right, R.anim.exit_out_right);
     }
 }
