@@ -2,13 +2,18 @@ package com.shmuelydlinn.rebbebrachas.Activities;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ButtonBarLayout;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,10 +28,18 @@ public class RequestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = this.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.statusbar_yellow));
+        }
+
         setContentView(R.layout.request_activity);
         Button sendButton = (Button) findViewById(R.id.send_button);
         final EditText letterText = (EditText) findViewById(R.id.letter_text);
-        TextView donate = (TextView) findViewById(R.id.donation_link);
+        ImageButton donate = (ImageButton) findViewById(R.id.donation_button);
         donate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,7 +54,7 @@ public class RequestActivity extends AppCompatActivity {
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
                 emailIntent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"Shmueld770@hotmail.com"});
                 emailIntent.setType("message/rfc822");
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Letter for the Rebbe");
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Letter for the Rebbe Shlita");
                 emailIntent.putExtra(Intent.EXTRA_TEXT   , letterText.getText());
                 emailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
 

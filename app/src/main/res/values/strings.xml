@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Rebbe770Brachahs</string>
+    <string name="app_name">Moshiach 770 Brachahs</string>
 
     <string name="menu_item1">Instructions for Writing</string>
     <string name="menu_item2">Information</string>
     <string name="menu_item3">Berachah Request</string>
-    <string name="donate">Please Donate</string>
-    <string name="write_letter">Write a letter</string>
+    <string name="donate">Please Donate (Optional)</string>
+    <string name="write_letter">Write a letter to the Rebbe Shlita</string>
     <string name="letter_hint">Required</string>
     <string name="send">Send</string>
     <string name="paypal_url">https://www.paypal.me/LivingMoshiach</string>
