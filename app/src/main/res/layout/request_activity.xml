@@ -3,6 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_yellow"
+    android:layout_weight="10"
     android:padding="10dp">
 
     <TextView
@@ -14,9 +15,17 @@
 
     <EditText
         android:id="@+id/letter_text"
+        android:background="@drawable/edit_text_border"
+        android:layout_weight="9"
+        android:padding="5dp"
+        android:gravity="top"
+        android:inputType="textMultiLine"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/letter_hint"/>
+        android:layout_height="0dp"
+        android:hint="@string/letter_hint">
+        <requestFocus/>
+        </EditText>
+
     <Button
         android:id="@+id/send_button"
         android:layout_width="wrap_content"
@@ -24,10 +33,20 @@
         android:text="@string/send"/>
 
     <ImageButton
-        android:layout_gravity="bottom"
         android:id="@+id/donation_button"
         android:background="@null"
         android:src="@drawable/paypal_donate"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:paddingStart="5sp"
+        android:paddingEnd="0dp"
+        android:paddingTop="-20dp"
+        android:textSize="10sp"
+        android:text="@string/donate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

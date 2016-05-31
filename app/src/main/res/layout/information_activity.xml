@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
+        android:textStyle="bold"
+        android:textSize="15sp"
         android:text="@string/information_text"/>
 
 </ScrollView>
