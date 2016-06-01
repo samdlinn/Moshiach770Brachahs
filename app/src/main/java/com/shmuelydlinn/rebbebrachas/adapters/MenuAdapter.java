@@ -29,10 +29,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
         }
     }
 
-    /**
-     *
-     * @param mainMenuItemList
-     */
     public MenuAdapter(List<MainMenuItem> mainMenuItemList) {
         this.mainMenuItemList = mainMenuItemList;
     }

@@ -20,11 +20,6 @@ public class MainMenuRecyclerItemClickListener implements RecyclerView.OnItemTou
 
     private final GestureDetector mGestureDetector;
 
-    /**
-     *
-     * @param context
-     * @param listener
-     */
     public MainMenuRecyclerItemClickListener(Context context, OnItemClickListener listener) {
         mListener = listener;
         mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {

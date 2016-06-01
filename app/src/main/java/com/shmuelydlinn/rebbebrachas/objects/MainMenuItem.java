@@ -8,18 +8,10 @@ package com.shmuelydlinn.rebbebrachas.objects;
 public class MainMenuItem {
     private final String text;
 
-    /**
-     *
-     * @param text
-     */
     public MainMenuItem(String text){
         this.text = text;
     }
 
-    /**
-     * 
-     * @return
-     */
     public String getText() {
         return text;
     }
