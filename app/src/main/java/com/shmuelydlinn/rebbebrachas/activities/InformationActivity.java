@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.method.LinkMovementMethod;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.shmuelydlinn.rebbebrachas.R;
@@ -17,7 +20,7 @@ import com.shmuelydlinn.rebbebrachas.R;
  * This Activity Handles the Information Frame
  */
 
-public class InformationActivity extends AppCompatActivity{
+public class InformationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +37,26 @@ public class InformationActivity extends AppCompatActivity{
 
         setContentView(R.layout.information_activity);
 
-        TextView text = (TextView) findViewById(R.id.information_text);
-        if (text != null) {
-            text.setMovementMethod(LinkMovementMethod.getInstance());
-        }
+        // Create DocumentView and set plain text
+        // Important: Use DocumentLayout.class
+//        DocumentView documentView = new DocumentView(this, DocumentView.PLAIN_TEXT);  // Support plain text
+//        documentView.getDocumentLayoutParams().setTextAlignment(TextAlignment.JUSTIFIED);
+//        documentView.setText("just testing", true); // Set to `true` to enable justification
+//
+        WebView webview = new WebView(this);
+        webview.setVerticalScrollBarEnabled(false);
+
+        ((LinearLayout)findViewById(R.id.inset_web_view)).addView(webview);
+
+        //webview.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        //webview.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+
+        webview.loadData(getString(R.string.information_text), "text/html; charset=utf-8", "utf-8");
+
+//        TextView text = (TextView) findViewById(R.id.information_text);
+//        if (text != null) {
+//            text.setMovementMethod(LinkMovementMethod.getInstance());
+//        }
     }
 
     @Override

@@ -29,7 +29,7 @@ public class RequestActivity extends AppCompatActivity {
         // used for incoming animation
         overridePendingTransition(R.anim.enter_from_left, R.anim.exit_out_left);
 
-        // only changes the status bar for 5.0+
+        // only changes the status bar color for 5.0+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
