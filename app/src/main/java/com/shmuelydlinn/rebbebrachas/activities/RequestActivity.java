@@ -1,4 +1,4 @@
-package com.shmuelydlinn.rebbebrachas.Activities;
+package com.shmuelydlinn.rebbebrachas.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -28,6 +28,8 @@ public class RequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // used for incoming animation
         overridePendingTransition(R.anim.enter_from_left, R.anim.exit_out_left);
+
+        // only changes the status bar for 5.0+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -38,32 +40,40 @@ public class RequestActivity extends AppCompatActivity {
         setContentView(R.layout.request_activity);
         Button sendButton = (Button) findViewById(R.id.send_button);
         final EditText letterText = (EditText) findViewById(R.id.letter_text);
+        // create and handle Paypal donate button
         ImageButton donate = (ImageButton) findViewById(R.id.donation_button);
         if (donate != null) {
             donate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent paypalIntent = new Intent(Intent.ACTION_VIEW);
+                    // send the use to a browser with paypal.me
                     paypalIntent.setData(Uri.parse(getString(R.string.paypal_url)));
                     startActivity(paypalIntent);
                 }
             });
         }
+        // handle sending button to make an email intent
         if (sendButton != null) {
             sendButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                    emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"Shmueld770@hotmail.com"});
+                    // send to this email
+                    emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{getString(R.string.rebbe_email)});
+                    // chose apps that can send messages
                     emailIntent.setType("message/rfc822");
-                    emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Letter for the Rebbe Shlita");
+                    // Subject of the email
+                    emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.letter_for_rebbe ));
+                    assert letterText != null;
                     emailIntent.putExtra(Intent.EXTRA_TEXT, letterText.getText());
                     emailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
 
+                    // test if the user does not have email installed
                     try {
-                        startActivity(Intent.createChooser(emailIntent, "Send email using..."));
+                        startActivity(Intent.createChooser(emailIntent, getString(R.string.send_email_using)));
                     } catch (android.content.ActivityNotFoundException ex) {
-                        Toast.makeText(RequestActivity.this, "No email clients installed.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RequestActivity.this, R.string.no_email_clients, Toast.LENGTH_SHORT).show();
                     }
                 }
             });

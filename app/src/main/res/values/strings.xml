@@ -3,12 +3,15 @@
 
     <string name="menu_item1">Instructions for Writing</string>
     <string name="menu_item2">Information</string>
-    <string name="menu_item3">Berachah Request</string>
+    <string name="menu_item3">Berachah Request etc</string>
     <string name="donate">Please Donate (Optional)</string>
     <string name="write_letter">Write a letter to the Rebbe Shlita:</string>
+    <string name="letter_for_rebbe">Letter for the Rebbe Shlita</string>
     <string name="letter_hint">Write your letter here</string>
+    <string name="send_email_using">Send email using…</string>
+    <string name="no_email_clients">No email clients installed.</string>
+    <string name="rebbe_email">MoshiachBrachah770@gmail.com</string>
     <string name="send">Send</string>
-    <string name="optional">(Optional)</string>
     <string name="paypal_url">https://www.paypal.me/LivingMoshiach</string>
     <string name="instructions_text">\t\t\tWhen writing to the Rebbe King Moshiach Shlita include your Jewish Name and Mother\'s name (a non-Jew writes their father\'s name) and likewise for all those you are requesting a blessing for (family name is not necessary). Good news is also something to write to the Rebbe King Moshiach Shlita and good resolutions to add in Torah and Mitzvos (especially Torah study about Moshiach and Tzedakah donations) which will add in receiving the blessing. Mainly accept the kingship of Moshiach by writing \"Long live the Rebbe King Moshiach forever\" to his majesty. The best is to visit the Rebbe King Moshiach shlita in person in 770 Eastern pkwy Brooklyn, New York at Sunday dollars etc. If this is not possible this app will get the letter to Moshiach.</string>
     <string name="information_text">\t\t\tAn example of a Miracle through a blessing of the Rebbe King Moshiach Shlita: In 5770 (2010), A. severely injured his leg in an accident. He had an operation which was supposed to improve his condition, but it was unsuccessful. It was hard for him to walk, and he had constant, intense pain. His friend, a Chabad rabbi, offered to write to the Rebbe King Moshiach Shlita, requesting a blessing for his complete recovery. By Divine providence he came across a letter of the Rebbe King Moshiach Shlita which says that a Jew should never feel down,

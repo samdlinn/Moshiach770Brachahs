@@ -15,8 +15,8 @@ android {
         applicationId "com.shmuelydlinn.rebbebrachas"
         minSdkVersion 17
         targetSdkVersion 23
-        versionCode 2
-        versionName "1.1"
+        versionCode 3
+        versionName "1.2"
     }
     buildTypes {
         release {
@@ -24,6 +24,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
         }
+    }
+    lintOptions {
+        disable 'AllowBackup'
+        // set to true to turn off analysis progress reporting by lint
+        quiet true
+        // if true, stop the gradle build if errors are found
+        abortOnError false
+        // if true, only report errors
+        ignoreWarnings true
     }
 }
 

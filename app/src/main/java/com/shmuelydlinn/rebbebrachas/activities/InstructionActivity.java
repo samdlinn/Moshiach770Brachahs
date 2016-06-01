@@ -1,4 +1,4 @@
-package com.shmuelydlinn.rebbebrachas.Activities;
+package com.shmuelydlinn.rebbebrachas.activities;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +21,8 @@ public class InstructionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // used for incoming animation
         overridePendingTransition(R.anim.enter_from_left, R.anim.exit_out_left);
+
+        // only changes the status bar for 5.0+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);

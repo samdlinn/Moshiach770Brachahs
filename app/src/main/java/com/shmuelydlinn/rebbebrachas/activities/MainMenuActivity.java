@@ -1,4 +1,4 @@
-package com.shmuelydlinn.rebbebrachas.Activities;
+package com.shmuelydlinn.rebbebrachas.activities;
 
 /**
  * Main Activity to handle the first page of the app
@@ -13,25 +13,26 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.shmuelydlinn.rebbebrachas.Adapters.MenuAdapter;
-import com.shmuelydlinn.rebbebrachas.Listeners.MainMenuRecyclerItemClickListener;
-import com.shmuelydlinn.rebbebrachas.Objects.MainMenuItem;
+import com.shmuelydlinn.rebbebrachas.adapters.MenuAdapter;
+import com.shmuelydlinn.rebbebrachas.listeners.MainMenuRecyclerItemClickListener;
+import com.shmuelydlinn.rebbebrachas.objects.MainMenuItem;
 import com.shmuelydlinn.rebbebrachas.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainMenuActivity extends AppCompatActivity {
-    private List<MainMenuItem> menuItemList = new ArrayList<>();
+    private final List<MainMenuItem> menuItemList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu_activity);
+
+        // only changes the status bar for 5.0+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -40,7 +41,7 @@ public class MainMenuActivity extends AppCompatActivity {
         }
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-
+        // create recycler view with adapter
         MenuAdapter menuAdapter = new MenuAdapter(menuItemList);
         if (recyclerView != null) {
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -51,7 +52,7 @@ public class MainMenuActivity extends AppCompatActivity {
             recyclerView.addOnItemTouchListener(
                     new MainMenuRecyclerItemClickListener(getApplicationContext(), new MainMenuRecyclerItemClickListener.OnItemClickListener() {
                         @Override
-                        public void onItemClick(View view, int position) {
+                        public void onItemClick(int position) {
                             Intent intent;
                             switch (position) {
                                 case 0:

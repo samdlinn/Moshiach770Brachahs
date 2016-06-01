@@ -1,4 +1,4 @@
-package com.shmuelydlinn.rebbebrachas.Adapters;
+package com.shmuelydlinn.rebbebrachas.adapters;
 
 /**
  * Created by shmueldlinn on 5/30/16.
@@ -11,17 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.shmuelydlinn.rebbebrachas.Objects.MainMenuItem;
+import com.shmuelydlinn.rebbebrachas.objects.MainMenuItem;
 import com.shmuelydlinn.rebbebrachas.R;
 
 import java.util.List;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> {
 
-    private List<MainMenuItem> mainMenuItemList;
+    private final List<MainMenuItem> mainMenuItemList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView text;
+        public final TextView text;
 
         public MyViewHolder(View view) {
             super(view);
@@ -29,6 +29,10 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
         }
     }
 
+    /**
+     *
+     * @param mainMenuItemList
+     */
     public MenuAdapter(List<MainMenuItem> mainMenuItemList) {
         this.mainMenuItemList = mainMenuItemList;
     }

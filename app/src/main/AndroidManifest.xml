@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".Activities.MainMenuActivity"
+            android:name=".activities.MainMenuActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name">
             <intent-filter>
@@ -18,9 +18,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.InstructionActivity"/>
-        <activity android:name=".Activities.RequestActivity"/>
-        <activity android:name=".Activities.InformationActivity"/>
+        <activity android:name=".activities.InstructionActivity"/>
+        <activity android:name=".activities.RequestActivity">
+        <intent-filter>
+            <data android:scheme="http"
+                android:host="www.LivingMoshiach.com"
+                android:pathPrefix="/LivingMoshiach" />
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+        </intent-filter>
+        </activity>
+        <activity android:name=".activities.InformationActivity"/>
     </application>
 
 </manifest>

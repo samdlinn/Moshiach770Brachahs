@@ -1,4 +1,4 @@
-package com.shmuelydlinn.rebbebrachas.Objects;
+package com.shmuelydlinn.rebbebrachas.objects;
 
 /**
  * Created by shmueldlinn on 5/30/16.
@@ -6,20 +6,22 @@ package com.shmuelydlinn.rebbebrachas.Objects;
  */
 
 public class MainMenuItem {
-    String text;
+    private final String text;
 
-    public MainMenuItem(){
-    }
-
+    /**
+     *
+     * @param text
+     */
     public MainMenuItem(String text){
         this.text = text;
     }
 
+    /**
+     * 
+     * @return
+     */
     public String getText() {
         return text;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
 }
