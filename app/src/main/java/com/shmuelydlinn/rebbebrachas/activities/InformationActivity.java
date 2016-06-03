@@ -5,13 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.text.method.LinkMovementMethod;
 import android.view.Window;
 import android.view.WindowManager;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.shmuelydlinn.rebbebrachas.R;
 
@@ -43,11 +40,14 @@ public class InformationActivity extends AppCompatActivity {
 //        documentView.getDocumentLayoutParams().setTextAlignment(TextAlignment.JUSTIFIED);
 //        documentView.setText("just testing", true); // Set to `true` to enable justification
 //
+        // Handles the Justify text style
         WebView webview = new WebView(this);
         webview.setVerticalScrollBarEnabled(false);
 
-        ((LinearLayout)findViewById(R.id.inset_web_view)).addView(webview);
-
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.inset_web_view);
+        if (linearLayout != null) {
+            linearLayout.addView(webview);
+        }
         //webview.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
         //webview.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 
