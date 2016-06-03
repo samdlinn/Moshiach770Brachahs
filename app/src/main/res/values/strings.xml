@@ -5,7 +5,7 @@
     <string name="menu_item2">Information</string>
     <string name="menu_item3">Berachah Request etc</string>
     <string name="donate">Please Donate (Optional)</string>
-    <string name="write_letter">Write a letter to the Rebbe Shlita etc:</string>
+    <string name="write_letter">Write a letter to the Rebbe Shlita:\n(see instructions above)</string>
     <string name="letter_for_rebbe">Letter for the Rebbe Shlita</string>
     <string name="letter_hint">Write your letter here</string>
     <string name="send_email_using">Send email using…</string>
